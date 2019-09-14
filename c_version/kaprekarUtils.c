@@ -22,11 +22,11 @@
  * @return <code>true</code> if <code>n</code> is a Kaprekar Number,
  * <code>false</code> otherwise.
  */
- int main(int argc, char const *argv[]) {
    int isKaprekar(int n) {
 
   if(n < 1) {
     return 0;
+    //return 0 instead of return false
   }
 
   int i;
@@ -34,13 +34,15 @@
   long square = n * (long) n;
   //compute the number of digits of the square
   int numDigits = (int) log10(n) + 1;
-  long modulus = 0;
+  long modulus = 1;
   long first, second;
 
   //for each possible "split" of the square...
+//change numberDigits to numDigits
   for(i=1; i<=numDigits; i++) {
     //increase the modulus by a factor of 10
     modulus *= 10;
+    //modulus instead of modulous
 
     //split the square into two parts
     first = square / modulus;
@@ -51,9 +53,9 @@
     //the sum of the two parts is equal to n, then it is
     if(second > 0 && n == (first + second)) {
       return 1;
+      //use == instead of =
     }
   }
   return 0;
 
-}
 }
